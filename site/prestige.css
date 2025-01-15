@@ -1,0 +1,51 @@
+Global
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style du menu */
+.menu {
+    background-color: #333;
+    color: white;
+    padding: 0.5em 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 0 1.5em;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+    font-size: 1.1rem; /* Augmente légèrement la taille du texte */
+}
+
+.menu ul li a:hover {
+    color: #4CAF50;
+}
+
+/* Espacement pour le contenu en dessous du menu */
+#game-container {
+    padding-top: 50px;
+}
