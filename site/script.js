@@ -128,20 +128,14 @@ function ajusterTempsCycle(generateur) {
 
 
 function lancerProduction(generateur) {
-    // Arrête un timer existant s'il y en a un
     if (generateur.timerId !== null) {
         clearInterval(generateur.timerId);
     }
 
-    const revenuParCycle = generateur.revenu * generateur.niveau * calculerMultiplicateur();
-
-    // Démarre un nouveau timer pour la production
     generateur.timerId = setInterval(() => {
-        if (generateur.niveau > 0) { // Ne produit que si le niveau est supérieur à 0
-            capital += revenuParCycle;
-            lifetimeEarnings += revenuParCycle;
-            updateAffichageCycle();
-        }
+        capital += generateur.revenu * generateur.niveau * calculerMultiplicateur();
+        lifetimeEarnings += generateur.revenu * generateur.niveau * calculerMultiplicateur();
+        updateAffichageCycle();
     }, generateur.temps * 1000);
 }
 
@@ -283,6 +277,12 @@ function loadGameData() {
             gen.niveau = gameData.generateurs[index].niveau;
             gen.temps = gameData.generateurs[index].temps;
             gen.timerId = gameData.generateurs[index].timerId;
+
+            // Redémarrer la production pour chaque générateur
+            if (gen.niveau > 0) {
+                lancerProduction(gen);
+            }
+            
         });
     }
 }
