@@ -1,3 +1,13 @@
+function toggleVisibility(showId, hideId) {
+    const showElement = document.getElementById(showId);
+    const hideElement = document.getElementById(hideId);
+
+    showElement.style.display = "block";
+    hideElement.style.display = "none";
+}
+
+
+
 // Propriétés des générateurs 
 const generateurs = [
     { nom: "Sablier Régressif", cout: 3.738, coeff: 1.07, temps: 0.6, tempsInitial: 0.6, revenu: 1, prod: 1.67, niveau: 0, multiple: 1, timerId: null },

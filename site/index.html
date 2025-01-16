@@ -6,82 +6,78 @@
     <title>Idle Time</title>
     <script src="script.js" defer></script>
     <script src="prestige.js" defer></script>
+    <script src="global.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prestige.css">
 </head>
 <body>
     <nav class="menu">
         <ul>
-            <li><a href="#game-container">Générateurs</a></li>
-            <li><a href="#retablissement_temporel">Prestige</a></li>
-            <!-- <li><a href="html">Statistiques</a></li> -->
+            <li><button onclick="toggleVisibility('temporel', 'prestige')">Générateurs</button></li>
+            <li><button onclick="toggleVisibility('prestige', 'temporel')">Prestige</button></li>
         </ul>
     </nav>
     <div id="game-container">
-        <h1>Idle Time Travel</h1>
 
-        <h2>Temps passé dans le futur: </h2>
-        <p id="capital">5</p>
-        <!-- <p>Temps dans le passé : <span class="niveau"></span></p> -->
-        <!-- <h2>Système de Rembobinage</h2> -->
+        <div id="temporel">
+            <h1>Idle Time Travel</h1>
 
-        <div id="progress-container">
-            <div id="progress-bar"></div>
-            <span id="progress-text">0%</span>
-        </div>
-        
-        <template id="template-generateur">
-            <div class="generateur">
-                <div class="content-generateur">
-                    <div class="nom"><p><span class="nom"></span></p></div>
-                    <div class="data_gen">
-                        <p>Niveau : <span class="niveau"></span></p>
-                        <p>Production : <span class="production"></span></p>
-                        <p>Délais : <span class="temps"></span></p>
+            <h2>Temps passé dans le futur: </h2>
+            <p id="capital">5</p>
+            <!-- <p>Temps dans le passé : <span class="niveau"></span></p> -->
+            <!-- <h2>Système de Rembobinage</h2> -->
+
+            <div id="progress-container">
+                <div id="progress-bar"></div>
+                <span id="progress-text">0%</span>
+            </div>
+            
+            <template id="template-generateur">
+                <div class="generateur">
+                    <div class="content-generateur">
+                        <div class="nom"><p><span class="nom"></span></p></div>
+                        <div class="data_gen">
+                            <p>Niveau : <span class="niveau"></span></p>
+                            <p>Production : <span class="production"></span></p>
+                            <p>Délais : <span class="temps"></span></p>
+                        </div>
                     </div>
+                    <button class="acheter-btn"></button>
                 </div>
-                <button class="acheter-btn"></button>
+            </template>
+            <div id="generateurs-container"></div>
+
+             <!-- <div class="Time Upgrade">
+                <h2>Amélioration temporel</h2>
+            </div> -->
+        </div>
+
+        <div id="prestige">
+            <h2>Améliorations Fragment</h2>
+            <template id="template-upgrade">
+                <div class="upgrade">
+                    <span class="name"></span>
+                    <span class="business"></span>
+                    <span class="price"></span>
+                    <span class="description"></span>
+                    <span class="reference"></span>
+                    <button class="acheter-upgrade-btn">Acheter</button>
+                </div>
+            </template>
+            <div id="upgrades-container"></div>
+            
+            <h2>Rétablissement Temporel</h2>
+            <p>Le rétablissement temporel vous permet de remonter le temps. Il réinitialise le jeu tout en vous offrant des fragments temporels.</p>
+
+            <button class="prestige_btn" onclick="resetJeu()">Rétablissement temporel</button>
+            <div id="retablissement_temporel" class="retablissement_temporel">
+                <p>fragment temporel potentiels : <span id="anges_potentiels">0</span></p>
+                <p>fragment temporel disponibles : <span id="ange_count">0</span></p>
+                <p>Bonus actuel : <span id="ange_bonus">0%</span></p>
+                <p>Gains cumulés (tous prestiges) : <span id="total_cumulative_earnings">0</span></p>
+                <p>Gains précédents : <span id="previous_earnings">0</span></p>
             </div>
-        </template>
-
-        <div id="generateurs-container"></div>
-
-        <h2>Améliorations</h2>
-        <template id="template-upgrade">
-            <div class="upgrade">
-                <span class="name"></span>
-                <span class="business"></span>
-                <span class="price"></span>
-                <span class="description"></span>
-                <span class="reference"></span>
-                <button class="acheter-upgrade-btn">Acheter</button>
-            </div>
-        </template>
-
-        <div id="upgrades-container"></div>
-        
-        <h2>Rétablissement Temporel</h2>
-        <p>Le rétablissement temporel vous permet de remonter le temps. Il réinitialise le jeu tout en vous offrant des fragments temporels.</p>
-
-        <button class="prestige_btn" onclick="resetJeu()">Rétablissement temporel</button>
-        <div id="retablissement_temporel" class="retablissement_temporel">
-            <p>fragment temporel potentiels : <span id="anges_potentiels">0</span></p>
-            <p>fragment temporel disponibles : <span id="ange_count">0</span></p>
-            <p>Bonus actuel : <span id="ange_bonus">0%</span></p>
-            <p>Gains cumulés (tous prestiges) : <span id="total_cumulative_earnings">0</span></p>
-            <p>Gains précédents : <span id="previous_earnings">0</span></p>
         </div>
-
-        <div class="Time Upgrade">
-            <h2>Amélioration temporel</h2>
-        </div>
-
-        <div class="Fragement Upgrade">
-            <h2>Amélioration Fragment</h2>
-        </div>
-
-        <div id="ameliorations-container"></div>
-<!-- ecrit le html corespondent a la function qui permet d'acheter des amélioration -->
-
     </div>    
 </body>
 </html>
